@@ -12,6 +12,7 @@ export default Component.extend({
   classNameBindings: ['focus:focus'],
   attributeBindings: ['role', 'ariaChecked:aria-checked', 'tabindex'],
   role: 'checkbox',
+  'on-toggle'() {},
   ariaChecked: computed('checked', function() {
     return get(this, 'checked') ? 'true' : 'false';
   }),
@@ -38,6 +39,7 @@ export default Component.extend({
 
   click() {
     this.toggleProperty('checked');
+    this.get('on-toggle')(this.get('checked'));
   },
 
   focusIn() {
